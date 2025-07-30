@@ -20,6 +20,10 @@ pipeline {
         steps {
                 echo 'monitoring  the project...'
             }
+            stage('scaning') {
+        steps {
+                echo 'scaning  the project...'
+            }
         }
     }
 }
