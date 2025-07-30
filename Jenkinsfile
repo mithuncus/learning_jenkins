@@ -23,7 +23,7 @@ pipeline {
         }
             stage('scaning') {
         steps {
-                echo 'monito  the project...'
+                echo 'scaning  the project...'
             }
         }
     }
