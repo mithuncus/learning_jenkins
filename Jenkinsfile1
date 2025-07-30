@@ -1,0 +1,60 @@
+pipeline {
+    agent any
+
+    environment {
+        PROJECT_NAME = 'SampleApp'
+        BUILD_NUMBER = "${env.BUILD_NUMBER}"
+    }
+
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage('Prepare') {
+            steps {
+                echo "Preparing workspace for ${env.PROJECT_NAME} - Build #${env.BUILD_NUMBER}"
+                // Clean or set up workspace if needed
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                // Insert build commands here, for example:
+                // sh 'make build'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running unit tests...'
+                // Insert test commands here:
+                // sh 'make test'
+            }
+        }
+        stage('Package') {
+            steps {
+                echo 'Packaging the application...'
+                // Insert packaging commands here:
+                // sh 'tar czf app.tar.gz build/'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Insert deploy commands here:
+                // sh './deploy.sh'
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Please check the logs.'
+        }
+        always {
+            echo 'This runs regardless of pipeline status.'
+        }
+    }
+}
