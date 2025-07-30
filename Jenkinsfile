@@ -26,5 +26,10 @@ pipeline {
                 echo 'scaning  the projects...'
             }
         }
+        stage('finding issues') {
+        steps {
+                echo 'finding issues  the projects...'
+            }
+        }
     }
 }
